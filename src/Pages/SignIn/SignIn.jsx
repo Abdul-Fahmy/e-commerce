@@ -1,11 +1,14 @@
 import axios from "axios";
 import { useFormik } from "formik";
+import { useContext } from "react";
 
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { object, string } from "yup";
+import { UserContext } from "../../Context/User.context";
 
 export default function SignIn() {
+  const { setToken } = useContext(UserContext);
   let navigate = useNavigate();
 
   const passwordRegex =
@@ -32,6 +35,8 @@ export default function SignIn() {
       };
       let { data } = await axios.request(options);
       if (data.message === "success") {
+        localStorage.setItem("token", data.token);
+        setToken(data.token);
         toast.success("User Logged in successfully");
         setTimeout(() => {
           navigate("/");
@@ -57,7 +62,7 @@ export default function SignIn() {
       <form className="space-y-6" onSubmit={formik.handleSubmit}>
         <div className="email">
           <input
-            className="w-full form-control"
+            className="w-full form-control border-green-600 "
             type="email"
             placeholder="Enter Your email"
             id="email"

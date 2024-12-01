@@ -15,16 +15,16 @@ export default function NavBar() {
               <a>Home</a>
             </NavLink>
             <li>
-              <a>Cart</a>
+              <NavLink to={"cart"}>Cart</NavLink>
             </li>
             <li>
-              <a>Products</a>
+              <NavLink to={"products"}>Products</NavLink>
             </li>
             <li>
-              <a>Categories</a>
+              <NavLink to={"categories"}>Categories</NavLink>
             </li>
             <li>
-              <a>Brands</a>
+              <NavLink to={"brands"}>Brands</NavLink>
             </li>
           </ul>
           <div className="cart cursor-pointer ml-auto relative">
@@ -35,43 +35,43 @@ export default function NavBar() {
           </div>
           <ul className="flex items-center gap-5 ">
             <li>
-              <a>
+              <Link>
                 <i className="fa-brands fa-instagram"></i>
-              </a>
+              </Link>
             </li>
             <li>
-              <a>
+              <Link>
                 <i className="fa-brands fa-facebook-f"></i>
-              </a>
+              </Link>
             </li>
             <li>
-              <a>
+              <Link>
                 <i className="fa-brands fa-tiktok"></i>
-              </a>
+              </Link>
             </li>
             <li>
-              <a>
+              <Link>
                 <i className="fa-brands fa-twitter"></i>
-              </a>
+              </Link>
             </li>
             <li>
-              <a>
+              <Link>
                 <i className="fa-brands fa-linkedin"></i>
-              </a>
+              </Link>
             </li>
             <li>
-              <a>
+              <Link>
                 <i className="fa-brands fa-youtube"></i>
-              </a>
+              </Link>
             </li>
           </ul>
 
           <ul className="flex items-center gap-5 ">
             <NavLink to={"/signup"}>SignUp</NavLink>
             <NavLink to={"/signin"}>SignIn</NavLink>
-            <a className="ml-4">
+            <Link className="ml-4">
               <i className="fa-solid fa-right-from-bracket text-lg"></i>
-            </a>
+            </Link>
           </ul>
         </div>
       </div>

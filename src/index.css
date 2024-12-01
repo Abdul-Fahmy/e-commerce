@@ -4,7 +4,7 @@
 
 @layer components {
   .form-control {
-    @apply px-2 py-1 rounded-md border-2 border-gray-500 border-opacity-50 focus:outline-none;
+    @apply px-2 py-1 rounded-md border-0  border-gray-500 border-opacity-50 focus:outline-0;
   }
 }
 body {
