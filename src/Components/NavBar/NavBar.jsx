@@ -1,39 +1,46 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/freshcart-logo.svg";
+import { useContext } from "react";
+import { UserContext } from "../../Context/User.context";
 
 export default function NavBar() {
+  let { token, logOut } = useContext(UserContext);
   return (
     <>
       <div className="nav py-3 shadow-sm">
-        <div className="container flex items-center justify-center gap-10">
+        <div className="container flex items-center gap-10">
           <Link to={"/"}>
             <img src={logo} alt="FreshCart Logo" />
           </Link>
 
-          <ul className="flex  items-center gap-5">
-            <NavLink to={"/"}>
-              <a>Home</a>
-            </NavLink>
-            <li>
-              <NavLink to={"cart"}>Cart</NavLink>
-            </li>
-            <li>
-              <NavLink to={"products"}>Products</NavLink>
-            </li>
-            <li>
-              <NavLink to={"categories"}>Categories</NavLink>
-            </li>
-            <li>
-              <NavLink to={"brands"}>Brands</NavLink>
-            </li>
-          </ul>
-          <div className="cart cursor-pointer ml-auto relative">
-            <i className="fa-solid fa-cart-shopping text-lg"></i>
-            <div className="cart-counter absolute h-5  w-5 rounded-full right-0 top-0 translate-x-1/2 -translate-y-1/2 bg-blue-700 text-white flex justify-center items-center ">
-              <span>0</span>
-            </div>
-          </div>
-          <ul className="flex items-center gap-5 ">
+          {token && (
+            <>
+              <ul className="flex  items-center gap-5">
+                <NavLink to={"/"}>
+                  <a>Home</a>
+                </NavLink>
+                <li>
+                  <NavLink to={"cart"}>Cart</NavLink>
+                </li>
+                <li>
+                  <NavLink to={"products"}>Products</NavLink>
+                </li>
+                <li>
+                  <NavLink to={"categories"}>Categories</NavLink>
+                </li>
+                <li>
+                  <NavLink to={"brands"}>Brands</NavLink>
+                </li>
+              </ul>
+              <div className="cart cursor-pointer ml-auto relative">
+                <i className="fa-solid fa-cart-shopping text-lg"></i>
+                <div className="cart-counter absolute h-5  w-5 rounded-full right-0 top-0 translate-x-1/2 -translate-y-1/2 bg-blue-700 text-white flex justify-center items-center ">
+                  <span>0</span>
+                </div>
+              </div>
+            </>
+          )}
+          <ul className={`flex items-center gap-5 ${!token && "ml-auto"}`}>
             <li>
               <Link>
                 <i className="fa-brands fa-instagram"></i>
@@ -67,11 +74,23 @@ export default function NavBar() {
           </ul>
 
           <ul className="flex items-center gap-5 ">
-            <NavLink to={"/signup"}>SignUp</NavLink>
-            <NavLink to={"/signin"}>SignIn</NavLink>
-            <Link className="ml-4">
-              <i className="fa-solid fa-right-from-bracket text-lg"></i>
-            </Link>
+            {!token && (
+              <>
+                <li>
+                  <NavLink to={"/signup"}>SignUp</NavLink>
+                </li>
+                <li>
+                  <NavLink to={"/signin"}>SignIn</NavLink>
+                </li>
+              </>
+            )}
+            {token && (
+              <li>
+                <Link className="ml-4" onClick={logOut}>
+                  <i className="fa-solid fa-right-from-bracket text-lg"></i>
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>

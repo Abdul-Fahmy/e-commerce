@@ -24,14 +24,14 @@ export default function Home() {
     <>
       <HomeSlider />
       <CategorySlider />
-      {products ? (
+      {!products ? (
+        <Loading />
+      ) : (
         <div className="my-5 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-5">
           {products.map((product) => (
             <Card productInfo={product} key={product.id} />
           ))}
         </div>
-      ) : (
-        <Loading />
       )}
     </>
   );

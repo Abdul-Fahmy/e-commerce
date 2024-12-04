@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useFormik } from "formik";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +8,8 @@ import { object, string } from "yup";
 import { UserContext } from "../../Context/User.context";
 
 export default function SignIn() {
+  const [inCorrectPasswordOrEmail, setInCorrectPasswordOrEmail] =
+    useState(null);
   const { setToken } = useContext(UserContext);
   let navigate = useNavigate();
 
@@ -43,7 +45,7 @@ export default function SignIn() {
         }, 2000);
       }
     } catch (error) {
-      console.log(error);
+      setInCorrectPasswordOrEmail(error.response.data.message);
     } finally {
       toast.dismiss(loadingId);
     }
@@ -90,6 +92,11 @@ export default function SignIn() {
           {formik.errors.password && formik.touched.password && (
             <p className="text-red-400 mt-1 text-sm">
               *{formik.errors.password}
+            </p>
+          )}
+          {inCorrectPasswordOrEmail && (
+            <p className="text-red-400 mt-1 text-sm">
+              *{inCorrectPasswordOrEmail}
             </p>
           )}
         </div>

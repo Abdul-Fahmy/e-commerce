@@ -28,7 +28,7 @@ function App() {
       ),
       children: [
         { path: "/signup", element: <SignUp /> },
-        { path: "/signin", element: <SignIn /> },
+        { path: "/signIn", element: <SignIn /> },
       ],
     },
   ]);
