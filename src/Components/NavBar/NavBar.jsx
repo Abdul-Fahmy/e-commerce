@@ -32,12 +32,15 @@ export default function NavBar() {
                   <NavLink to={"brands"}>Brands</NavLink>
                 </li>
               </ul>
-              <div className="cart cursor-pointer ml-auto relative">
+              <Link
+                to={"/cart"}
+                className="cart cursor-pointer ml-auto relative"
+              >
                 <i className="fa-solid fa-cart-shopping text-lg"></i>
                 <div className="cart-counter absolute h-5  w-5 rounded-full right-0 top-0 translate-x-1/2 -translate-y-1/2 bg-blue-700 text-white flex justify-center items-center ">
                   <span>0</span>
                 </div>
-              </div>
+              </Link>
             </>
           )}
           <ul className={`flex items-center gap-5 ${!token && "ml-auto"}`}>

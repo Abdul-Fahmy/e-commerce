@@ -1,10 +1,40 @@
+import { useContext } from "react";
+import { CartContext } from "../../Context/Cart.contect";
+
 export default function Card({ productInfo }) {
-  const { imageCover, title, price, category, description, ratingsAverage } =
-    productInfo;
+  const {
+    imageCover,
+    title,
+    price,
+    category,
+    description,
+    ratingsAverage,
+    id,
+  } = productInfo;
+
+  let { addProductToCart } = useContext(CartContext);
   return (
     <>
-      <div className="card  shadow-lg overflow-hidden rounded-xl">
-        <img className="object-cover w-full " src={imageCover} alt="" />
+      <div className="card group/card  shadow-lg overflow-hidden rounded-xl">
+        <div className="relative">
+          <img className="object-cover w-full " src={imageCover} alt="" />
+          <div className="layer group-hover/card:opacity-100 flex justify-center items-center gap-4 absolute w-full h-full left-0 top-0 bg-slate-400 bg-opacity-40 opacity-0 transition-opacity duration-300">
+            <div className="w-8 h-8 rounded-full bg-yellow-600 text-white flex justify-center items-center cursor-pointer">
+              <i className="fa-solid fa-heart"></i>
+            </div>
+            <div
+              onClick={() => {
+                addProductToCart({ productId: id });
+              }}
+              className="w-8 h-8 rounded-full bg-yellow-600 text-white flex justify-center items-center cursor-pointer"
+            >
+              <i className="fa-solid fa-cart-shopping"></i>
+            </div>
+            <div className="w-8 h-8 rounded-full bg-yellow-600 text-white flex justify-center items-center cursor-pointer">
+              <i className="fa-regular fa-eye"></i>
+            </div>
+          </div>
+        </div>
         <div className="card-body space-y-2 px-3 py-2">
           <div className="card-header ">
             <h3 className="text-lg font-semibold text-gray-400 line-clamp-1">

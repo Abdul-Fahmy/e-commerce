@@ -7,6 +7,8 @@ import Home from "./Pages/Home/Home";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import GuestRoute from "./Components/GuestRoute/GuestRoute";
 import UserProvider from "./Context/User.context";
+import CartProvider from "./Context/Cart.contect";
+import Cart from "./Pages/Cart/Cart";
 
 function App() {
   const routes = createBrowserRouter([
@@ -17,7 +19,10 @@ function App() {
           <Layout />
         </ProtectedRoute>
       ),
-      children: [{ index: true, element: <Home /> }],
+      children: [
+        { index: true, element: <Home /> },
+        { path: "/cart", element: <Cart /> },
+      ],
     },
     {
       path: "/",
@@ -35,7 +40,9 @@ function App() {
   return (
     <>
       <UserProvider>
-        <RouterProvider router={routes}></RouterProvider>
+        <CartProvider>
+          <RouterProvider router={routes}></RouterProvider>
+        </CartProvider>
       </UserProvider>
       <Toaster />
     </>
