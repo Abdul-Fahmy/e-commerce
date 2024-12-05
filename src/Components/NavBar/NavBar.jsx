@@ -16,9 +16,10 @@ export default function NavBar() {
           {token && (
             <>
               <ul className="flex  items-center gap-5">
-                <NavLink to={"/"}>
-                  <a>Home</a>
-                </NavLink>
+                <li><NavLink to={"/"}>
+                  Home
+                </NavLink></li>
+                
                 <li>
                   <NavLink to={"cart"}>Cart</NavLink>
                 </li>
