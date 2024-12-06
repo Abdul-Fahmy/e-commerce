@@ -5,7 +5,7 @@ export default function Layout() {
   return (
     <>
       <NavBar />
-      <div className="container">
+      <div className="container min-h-[60vh] pb-10 pt-20">
         <Outlet />
       </div>
     </>

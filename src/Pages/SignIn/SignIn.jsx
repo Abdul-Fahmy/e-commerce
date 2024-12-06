@@ -61,10 +61,10 @@ export default function SignIn() {
   return (
     <>
       <h2 className="my-5">Sign In Now :</h2>
-      <form className="space-y-6" onSubmit={formik.handleSubmit}>
-        <div className="email">
+      <form className="space-y-3" onSubmit={formik.handleSubmit}>
+        <div className="email ">
           <input
-            className="w-full form-control border-green-600 "
+            className=" form-control "
             type="email"
             placeholder="Enter Your email"
             id="email"
@@ -80,7 +80,7 @@ export default function SignIn() {
 
         <div className="password">
           <input
-            className="w-full form-control"
+            className=" form-control"
             type="password"
             placeholder="Enter Your Password"
             id="password"
