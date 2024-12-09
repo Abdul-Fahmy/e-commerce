@@ -6,11 +6,11 @@ import { CartContext } from "../../Context/Cart.context";
 
 export default function NavBar() {
   let { token, logOut } = useContext(UserContext);
-  let {cartInfo, getProductsCart} = useContext(CartContext)
+  let { cartInfo, getProductsCart } = useContext(CartContext);
 
-  useEffect(()=>{
-    getProductsCart()
-  },[])
+  useEffect(() => {
+    getProductsCart();
+  }, []);
   return (
     <>
       <div className="nav py-3 shadow bg-slate-100 fixed top-0 left-0 right-0 z-50">
@@ -22,12 +22,8 @@ export default function NavBar() {
           {token && (
             <>
               <ul className="flex  items-center gap-5">
-                <li><NavLink to={"/"}>
-                  Home
-                </NavLink></li>
-                
                 <li>
-                  <NavLink to={"cart"}>Cart</NavLink>
+                  <NavLink to={"/"}>Home</NavLink>
                 </li>
                 <li>
                   <NavLink to={"products"}>Products</NavLink>
@@ -38,6 +34,9 @@ export default function NavBar() {
                 <li>
                   <NavLink to={"brands"}>Brands</NavLink>
                 </li>
+                <li>
+                  <NavLink to={"allorders"}>Orders</NavLink>
+                </li>
               </ul>
               <Link
                 to={"/cart"}
@@ -45,7 +44,11 @@ export default function NavBar() {
               >
                 <i className="fa-solid fa-cart-shopping text-lg"></i>
                 <div className="cart-counter absolute h-5  w-5 rounded-full right-0 top-0 translate-x-1/2 -translate-y-1/2 bg-blue-700 text-white flex justify-center items-center ">
-                  {cartInfo === null ? <i className="fa-solid fa-spinner fa-spin"></i> : <span>{cartInfo.numOfCartItems}</span>}
+                  {cartInfo === null ? (
+                    <i className="fa-solid fa-spinner fa-spin"></i>
+                  ) : (
+                    <span>{cartInfo.numOfCartItems}</span>
+                  )}
                 </div>
               </Link>
             </>

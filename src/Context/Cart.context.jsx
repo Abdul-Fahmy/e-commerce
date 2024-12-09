@@ -24,10 +24,10 @@ export default function CartProvider({ children }) {
         },
       };
       let { data } = await axios.request(options);
-      
+
       if (data.status === "success") {
         toast.success(data.message);
-        getProductsCart()
+        getProductsCart();
       }
     } catch (error) {
       console.log(error);
@@ -47,91 +47,90 @@ export default function CartProvider({ children }) {
         },
       };
       let { data } = await axios.request(options);
-      
+
       setCartInfo(data);
     } catch (error) {
       console.log(error);
     }
   }
   // remove product
-  async function removeProductFromCart({productId}) {
-   let toastId =  toast.loading('Deleting product ...')
-  try {
-    const options = {
-      url: `https://ecommerce.routemisr.com/api/v1/cart/${productId}`,
-      method: 'DELETE',
-      headers:{
-        token
+  async function removeProductFromCart({ productId }) {
+    let toastId = toast.loading("Deleting product ...");
+    try {
+      const options = {
+        url: `https://ecommerce.routemisr.com/api/v1/cart/${productId}`,
+        method: "DELETE",
+        headers: {
+          token,
+        },
+      };
+      let { data } = await axios.request(options);
+      if (data.status === "success") {
+        toast.success("Product has been deleted successfully");
+        setCartInfo(data);
       }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      toast.dismiss(toastId);
     }
-    let {data} = await axios.request(options)
-    if (data.status === 'success') {
-      toast.success('Product has been deleted successfully')
-      setCartInfo(data)
-    }
-    
-  } catch (error) {
-    console.log(error);  
-  } finally {
-    toast.dismiss(toastId)
   }
-  }
-//clear cart 
-async function clearCart() {
-  let toastId = toast.loading('Deleting All Products')
-  try {
-    const options = {
-      url: 'https://ecommerce.routemisr.com/api/v1/cart',
-      method: 'DELETE',
-      headers: {
-        token
+  //clear cart
+  async function clearCart() {
+    let toastId = toast.loading("Deleting All Products");
+    try {
+      const options = {
+        url: "https://ecommerce.routemisr.com/api/v1/cart",
+        method: "DELETE",
+        headers: {
+          token,
+        },
+      };
+      let { data } = await axios.request(options);
+      if (data.message === "success") {
+        toast.success("All Products Deleted Successfully");
+        setCartInfo({
+          numOfCartItems: 0,
+        });
       }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      toast.dismiss(toastId);
     }
-    let {data} = await axios.request(options)
-    if (data.message === 'success') {
-      toast.success('All Products Deleted Successfully')
-      setCartInfo({
-        numOfCartItems:0
-      })
-    }
-    
-    
-  } catch (error) {
-    console.log(error);
-    
-  }finally{
-    toast.dismiss(toastId)
   }
-
-}
-// update count 
-async function updateProductCount({productId, count}) {
-  try {
-    const options = {
-      url: `https://ecommerce.routemisr.com/api/v1/cart/${productId}`,
-      method: 'PUT',
-      headers:{
-        token
-      },
-      data: {
-        count
+  // update count
+  async function updateProductCount({ productId, count }) {
+    try {
+      const options = {
+        url: `https://ecommerce.routemisr.com/api/v1/cart/${productId}`,
+        method: "PUT",
+        headers: {
+          token,
+        },
+        data: {
+          count,
+        },
+      };
+      let { data } = await axios.request(options);
+      if (data.status === "success") {
+        setCartInfo(data);
       }
+    } catch (error) {
+      console.log(error);
     }
-    let {data} = await axios.request(options)
-    if (data.status === 'success') {
-      setCartInfo(data)
-    }
-    
-  } catch (error) {
-    console.log(error);
-    
   }
-  
-}
 
   return (
     <CartContext.Provider
-      value={{ addProductToCart, getProductsCart, cartInfo,removeProductFromCart, clearCart,updateProductCount }}
+      value={{
+        addProductToCart,
+        getProductsCart,
+        cartInfo,
+        removeProductFromCart,
+        clearCart,
+        updateProductCount,
+      }}
     >
       {children}
     </CartContext.Provider>

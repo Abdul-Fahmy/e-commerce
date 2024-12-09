@@ -7,6 +7,9 @@ export default {
     },
 
     extend: {
+      fontFamily: {
+        cairo: "Cairo Variable",
+      },
       screens: {
         "2xl": "1320px",
       },

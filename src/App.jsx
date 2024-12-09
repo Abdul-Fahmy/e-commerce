@@ -13,6 +13,9 @@ import Products from "./Pages/Products/Products";
 import Categories from "./Pages/Categories/Categories";
 import Brands from "./Pages/Brands/Brands";
 import ProductDetails from "./Pages/ProductDetails/ProductDetails";
+import Checkout from "./Pages/Checkout/Checkout";
+import Orders from "./Pages/Orders/Orders";
+import CategoryDetails from "./Pages/CategoryDetails/CategoryDetails";
 
 function App() {
   const routes = createBrowserRouter([
@@ -25,11 +28,13 @@ function App() {
       ),
       children: [
         { index: true, element: <Home /> },
-        { path: "cart", element: <Cart /> },
         { path: "products", element: <Products /> },
         { path: "categories", element: <Categories /> },
         { path: "brands", element: <Brands /> },
         { path: "product/:id", element: <ProductDetails /> },
+        { path: "checkout", element: <Checkout /> },
+        { path: "allorders", element: <Orders /> },
+        { path: "category/:id", element: <CategoryDetails /> },
       ],
     },
     {
