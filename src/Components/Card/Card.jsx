@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { CartContext } from "../../Context/Cart.context";
 import { Link } from "react-router-dom";
+import { WishListContext } from "../../Context/WishList.context";
 
 export default function Card({ productInfo }) {
   const {
@@ -14,13 +15,25 @@ export default function Card({ productInfo }) {
   } = productInfo;
 
   let { addProductToCart } = useContext(CartContext);
+  let {addProductToWishList,wishList,removeProductFromWishList} = useContext(WishListContext) 
+  
   return (
     <>
       <div className="card group/card  shadow-lg overflow-hidden rounded-xl">
         <div className="relative">
           <img className="object-cover w-full " src={imageCover} alt="" />
           <div className="layer group-hover/card:opacity-100 flex justify-center items-center gap-4 absolute w-full h-full left-0 top-0 bg-slate-400 bg-opacity-40 opacity-0 transition-opacity duration-300">
-            <div className="w-8 h-8 rounded-full bg-yellow-600 text-white flex justify-center items-center cursor-pointer">
+            <div onClick={()=>{
+              
+                if (wishList.includes(id)) {
+                  removeProductFromWishList({productId:id})
+                }else {
+                  addProductToWishList({productId:id})
+                }
+           
+              
+              
+            }} className={`w-8 h-8 rounded-full ${wishList.includes(id) ? 'bg-red-600' :"bg-yellow-600" }   text-white flex justify-center items-center cursor-pointer`}>
               <i className="fa-solid fa-heart"></i>
             </div>
             <div

@@ -19,6 +19,7 @@ import CategoryDetails from "./Pages/CategoryDetails/CategoryDetails";
 import ForgotPassword from "./Pages/ForgotPassword/ForgotPassword";
 import ResetCode from "./Pages/ResetCode/ResetCode";
 import ResetPassword from "./Pages/ResetPassword/ResetPassword";
+import WishListProvider from "./Context/WishList.context";
 
 function App() {
   const routes = createBrowserRouter([
@@ -39,6 +40,7 @@ function App() {
         { path: "allorders", element: <Orders /> },
         { path: "category/:id", element: <CategoryDetails /> },
         { path: "cart", element: <Cart /> },
+       
       ],
     },
     {
@@ -61,7 +63,9 @@ function App() {
     <>
       <UserProvider>
         <CartProvider>
+          <WishListProvider>
           <RouterProvider router={routes}></RouterProvider>
+          </WishListProvider>
         </CartProvider>
       </UserProvider>
       <Toaster />
