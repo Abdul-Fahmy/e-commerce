@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import { useContext, useState } from "react";
 
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { object, string } from "yup";
 import { UserContext } from "../../Context/User.context";
 
@@ -100,6 +100,12 @@ export default function SignIn() {
             </p>
           )}
         </div>
+        <Link
+          className="inline-block mt-3 text-blue-500 hover:text-blue-600"
+          to={"/forgotPassword"}
+        >
+          Forgot your password?
+        </Link>
 
         <button
           className="flex ml-auto py-2 px-3 bg-blue-400 text-white rounded-md"

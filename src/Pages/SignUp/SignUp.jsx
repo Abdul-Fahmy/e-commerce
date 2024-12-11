@@ -47,7 +47,7 @@ export default function SignUp() {
       if (data.message === "success") {
         toast.success("User created successfully");
         setTimeout(() => {
-          navigate("/login");
+          navigate("/signIn");
         }, 2000);
       }
     } catch (error) {

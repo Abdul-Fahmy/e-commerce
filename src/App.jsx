@@ -16,6 +16,9 @@ import ProductDetails from "./Pages/ProductDetails/ProductDetails";
 import Checkout from "./Pages/Checkout/Checkout";
 import Orders from "./Pages/Orders/Orders";
 import CategoryDetails from "./Pages/CategoryDetails/CategoryDetails";
+import ForgotPassword from "./Pages/ForgotPassword/ForgotPassword";
+import ResetCode from "./Pages/ResetCode/ResetCode";
+import ResetPassword from "./Pages/ResetPassword/ResetPassword";
 
 function App() {
   const routes = createBrowserRouter([
@@ -35,6 +38,7 @@ function App() {
         { path: "checkout", element: <Checkout /> },
         { path: "allorders", element: <Orders /> },
         { path: "category/:id", element: <CategoryDetails /> },
+        { path: "cart", element: <Cart /> },
       ],
     },
     {
@@ -47,6 +51,9 @@ function App() {
       children: [
         { path: "/signup", element: <SignUp /> },
         { path: "/signIn", element: <SignIn /> },
+        { path: "forgotPassword", element: <ForgotPassword /> },
+        { path: "resetCode", element: <ResetCode /> },
+        { path: "resetPassword", element: <ResetPassword /> },
       ],
     },
   ]);

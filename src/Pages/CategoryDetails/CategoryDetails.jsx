@@ -17,7 +17,6 @@ export default function CategoryDetails() {
         method: "GET",
       };
       let { data } = await axios.request(options);
-      console.log(data);
       setCategoryDetails(data.data);
       if (data.results === 0) {
         toast.custom((t) => (
@@ -35,7 +34,7 @@ export default function CategoryDetails() {
         ));
         setTimeout(() => {
           navigate("/categories");
-        }, 4000);
+        }, 2000);
       }
     } catch (error) {
       console.log(error);
