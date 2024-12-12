@@ -3,13 +3,16 @@ import logo from "../../assets/freshcart-logo.svg";
 import { useContext, useEffect } from "react";
 import { UserContext } from "../../Context/User.context";
 import { CartContext } from "../../Context/Cart.context";
+import { WishListContext } from "../../Context/WishList.context";
 
 export default function NavBar() {
   let { token, logOut } = useContext(UserContext);
   let { cartInfo, getProductsCart } = useContext(CartContext);
+  const {wishListInfo,getWishList} = useContext(WishListContext)
 
   useEffect(() => {
     getProductsCart();
+    getWishList();
   }, []);
   return (
     <>
@@ -48,6 +51,19 @@ export default function NavBar() {
                     <i className="fa-solid fa-spinner fa-spin"></i>
                   ) : (
                     <span>{cartInfo.numOfCartItems}</span>
+                  )}
+                </div>
+              </Link>
+              <Link
+                to={"/wishlist"}
+                className="cart cursor-pointer  relative"
+              >
+                <i className={` fa-solid fa-heart text-lg text-red-600`}></i>
+                <div className="cart-counter absolute h-5  w-5 rounded-full right-0 top-0 translate-x-1/2 -translate-y-1/2 bg-blue-700 text-white flex justify-center items-center ">
+                  {wishListInfo === null ? (
+                    <i className="fa-solid fa-spinner fa-spin"></i>
+                  ) : (
+                    <span>{wishListInfo.count}</span>
                   )}
                 </div>
               </Link>

@@ -10,6 +10,7 @@ export const WishListContext = createContext(null);
 export default function WishListProvider ({children}){
 const {token} = useContext(UserContext)
 const [wishList, setWishList] = useState(localStorage.getItem('wishList'))
+const [wishListInfo, setWishListInfo] = useState(null)
 
 
 // Adding products to wishlist
@@ -62,6 +63,7 @@ async function removeProductFromWishList({productId}) {
       localStorage.removeItem('wishList')
       localStorage.setItem('wishList',data.data)
       
+      
     }
     
   } catch (error) {
@@ -75,6 +77,7 @@ async function removeProductFromWishList({productId}) {
 
 // get user wishList
 async function getWishList() {
+try {
   const options = {
     url: 'https://ecommerce.routemisr.com/api/v1/wishlist',
     method: 'GET',
@@ -84,8 +87,14 @@ async function getWishList() {
 
   }
   let {data} = await axios.request(options)
-  console.log(data);
+  
+  setWishListInfo(data)
+  
+} catch (error) {
+  console.log(error);
   
 }
-    return <WishListContext.Provider value = {{addProductToWishList, wishList,removeProductFromWishList,getWishList}}>{children}</WishListContext.Provider>;
+  
+}
+    return <WishListContext.Provider value = {{addProductToWishList, wishList,removeProductFromWishList,getWishList,wishListInfo}}>{children}</WishListContext.Provider>;
 }
