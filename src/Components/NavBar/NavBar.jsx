@@ -8,7 +8,7 @@ import { WishListContext } from "../../Context/WishList.context";
 export default function NavBar() {
   let { token, logOut } = useContext(UserContext);
   let { cartInfo, getProductsCart } = useContext(CartContext);
-  const {wishListInfo,getWishList} = useContext(WishListContext)
+  const { wishListInfo, getWishList } = useContext(WishListContext);
 
   useEffect(() => {
     getProductsCart();
@@ -54,10 +54,7 @@ export default function NavBar() {
                   )}
                 </div>
               </Link>
-              <Link
-                to={"/wishlist"}
-                className="cart cursor-pointer  relative"
-              >
+              <Link to={"/wishlist"} className="cart cursor-pointer  relative">
                 <i className={` fa-solid fa-heart text-lg text-red-600`}></i>
                 <div className="cart-counter absolute h-5  w-5 rounded-full right-0 top-0 translate-x-1/2 -translate-y-1/2 bg-blue-700 text-white flex justify-center items-center ">
                   {wishListInfo === null ? (

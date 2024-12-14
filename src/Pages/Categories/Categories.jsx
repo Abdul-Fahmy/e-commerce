@@ -26,7 +26,7 @@ export default function Categories() {
     <>
       {categories ? (
         <section>
-          <div className="grid md:gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
+          <div className="grid sm:grid-cols-1 md:gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
             {categories.map((category) => (
               <div
                 key={category._id}
@@ -40,7 +40,7 @@ export default function Categories() {
                 <div className="title text-center my-4">
                   <Link
                     to={`/category/${category._id}`}
-                    className="text-gray-500 font-semibold text-lg"
+                    className="text-gray-500 font-semibold text-2xl"
                   >
                     {category.name}
                   </Link>
