@@ -181,7 +181,7 @@ export default function NavBar() {
                   }}
                   className="border-solid border border-slate-400 rounded px-2 py-1 relative md:hidden"
                 >
-                  <i class="fa-solid fa-bars"></i>
+                  <i className="fa-solid fa-bars"></i>
                   <div
                     className={`absolute bg-slate-100 top-10 z-50 w-52 right-0 md:right-0 rounded-md ${isMenuHidden} `}
                   >
