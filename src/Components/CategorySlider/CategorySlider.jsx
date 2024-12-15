@@ -18,17 +18,31 @@ export default function CategorySlider() {
   }, []);
   return (
     <>
-      <section className="my-8">
-        <h2 className="text-lg font-semibold text-gray-500 mb-2">
+      <section className="my-8 text-center md:text-start">
+        <h2 className="text-lg font-semibold text-gray-500 mb-2 ">
           Shop Popular Categories
         </h2>
         {!categories ? (
           <Loading />
         ) : (
-          <Swiper slidesPerView={6} loop={true}>
+          <Swiper breakpoints={
+            {320:{
+            slidesPerView:1
+          },
+          480:{
+            slidesPerView:3
+          },
+          640:{
+            slidesPerView:4
+          },
+          860:{
+            slidesPerView:6
+          }
+          
+          }} loop={true}>
             {categories.map((category) => (
               <SwiperSlide key={category._id}>
-                <div className="h-64">
+                <div className="h-80">
                   <img
                     className="w-full h-full object-cover"
                     src={category.image}

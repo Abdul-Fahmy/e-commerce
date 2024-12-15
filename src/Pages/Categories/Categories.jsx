@@ -26,7 +26,7 @@ export default function Categories() {
     <>
       {categories ? (
         <section>
-          <div className="grid sm:grid-cols-1 md:gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
+          <div className="grid sm:grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 px-4 md:px-0 ">
             {categories.map((category) => (
               <div
                 key={category._id}

@@ -48,7 +48,7 @@ export default function BrandDetails() {
     <>
       {brandDetails ? (
         <section>
-          <div className="category-details grid md:gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="category-details grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 px-4 md:px-0">
             {brandDetails.map((brand) => (
               <Card key={brand.id} productInfo={brand} />
             ))}

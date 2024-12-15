@@ -10,7 +10,7 @@ export default function WishList() {
         getWishList()
     },[wishList])
   return <>
-  {wishListInfo === null ? <Loading/> : <section>
+  {wishListInfo === null ? <Loading/> : <section className="my-8 px-4 md:px-0">
     <h1 className="mb-4 font-semibold text-xl text-gray-500">Your wishlist:</h1>
     
     {wishListInfo.count === 0 ?

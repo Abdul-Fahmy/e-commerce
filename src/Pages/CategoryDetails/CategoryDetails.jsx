@@ -47,7 +47,7 @@ export default function CategoryDetails() {
     <>
       {categoryDetails ? (
         <section>
-          <div className="category-details grid md:gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
+          <div className="category-details grid gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 px-4 md:px-0">
             {categoryDetails.map((category) => (
               <Card key={category.id} productInfo={category} />
             ))}

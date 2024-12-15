@@ -32,7 +32,7 @@ export default function Orders() {
         <section>
           {orders.length === 0 ? (
             
-              <div className="bg-gray-100 rounded-md  mt-5 shadow p-8 flex flex-col justify-center items-center gap-4">
+              <div className="bg-gray-100 rounded-md  mt-5 shadow p-8 flex flex-col justify-center items-center gap-4 px-4 md:px-0">
                 <h2>
                   Oops! Your Orders is empty. Start shopping now by clicking
                   the button below and find something you love!
@@ -47,11 +47,11 @@ export default function Orders() {
               </div>
             
           ) : (
-            <section className="space-y-4">
+            <section className="space-y-4 px-4 md:px-0">
               {orders.map((order) => (
                 <div
                   key={order.id}
-                  className="order p-4 border-solid border-2 border-gray-400 border-opacity-25 rounded-lg"
+                  className="order p-4 border-solid border-2 border-gray-400 border-opacity-25 rounded-lg "
                 >
                   <header className="flex justify-between items-center mb-4">
                     <div>

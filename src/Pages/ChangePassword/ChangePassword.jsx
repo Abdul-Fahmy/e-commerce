@@ -70,8 +70,8 @@ export default function ChangePassword() {
   });
   return (
     <>
-      <section className="flex flex-col justify-center items-center min-h-[60vh]">
-        <div className="flex flex-col justify-center items-center border-solid rounded-md shadow-md bg-gray-200 w-1/2">
+      <section className="flex flex-col justify-center items-center min-h-[60vh] px-4 md:px-0">
+        <div className="flex flex-col justify-center items-center border-solid rounded-md shadow-md bg-gray-200 w-full md:w-1/2 ">
           <h2 className="font-semibold text-gray-600 my-4">
             Change Your Password
           </h2>

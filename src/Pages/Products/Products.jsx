@@ -48,7 +48,7 @@ export default function Products() {
             />
           </div>
           {filteredProducts ? (
-            <div className="my-5 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5">
+            <div className="my-5 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5 px-4 md:px-0">
               {filteredProducts.map((product) => (
                 <Card productInfo={product} key={product.id} />
               ))}
