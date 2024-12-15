@@ -22,6 +22,7 @@ import ResetPassword from "./Pages/ResetPassword/ResetPassword";
 import WishListProvider from "./Context/WishList.context";
 import WishList from "./Pages/WishList/WishList";
 import BrandDetails from "./Pages/BrandDetails/BrandDetails";
+import ChangePassword from "./Pages/ChangePassword/ChangePassword";
 
 function App() {
   const routes = createBrowserRouter([
@@ -44,6 +45,7 @@ function App() {
         { path: "cart", element: <Cart /> },
         { path: "wishlist", element: <WishList /> },
         { path: "brand/:id", element: <BrandDetails /> },
+        { path: "changePassword", element: <ChangePassword /> },
       ],
     },
     {
