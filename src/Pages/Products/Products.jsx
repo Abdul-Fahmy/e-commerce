@@ -1,12 +1,16 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Loading from "../../Components/Loading/Loading";
 import Card from "../../Components/Card/Card";
+import SideBar from "../../Components/SideBar/SideBar";
+import { FilterContext } from "../../Context/Filter.context";
 
 export default function Products() {
   const [products, setProducts] = useState(null);
   const [searchValue, setSearchValue] = useState("");
   const [filteredProducts, setFilteredProducts] = useState(products);
+  const [isOpen, setIsOpen] = useState(true)
+  const {expensive,low} = useContext(FilterContext)
 
   async function getProduct() {
     const options = {
@@ -14,10 +18,10 @@ export default function Products() {
       method: "GET",
     };
     let { data } = await axios.request(options);
-
+    console.log(data);
+    
     setProducts(data.data);
   }
-
   // handleSearchOnChange
   const onChange = (e) => {
     const search = e.target.value.toLowerCase();
@@ -29,16 +33,28 @@ export default function Products() {
   };
 
   useEffect(() => {
-    getProduct();
-  }, []);
-
+    if (expensive) {
+      setProducts(expensive)
+    }else{
+      getProduct()
+    }
+  }, [expensive]);
+useEffect(()=>{
+if (low) {
+  setProducts(low)
+}else{
+  getProduct()
+}
+},[low])
   return (
     <>
       {!products ? (
         <Loading />
       ) : (
         <>
-          <div className="search w-3/4 mx-auto my-5">
+        <SideBar isOpen={isOpen} products={products}/>
+          <div className="flex gap-20 justify-center items-center">
+          <div className="search grow w-3/4 mx-auto my-5">
             <input
               className="form-control"
               value={searchValue}
@@ -46,6 +62,14 @@ export default function Products() {
               type="search"
               placeholder="search products..."
             />
+          </div>
+          <button onClick={()=>{
+            if (isOpen) {
+              setIsOpen(false)
+            }else{
+              setIsOpen(true)
+            }
+          }} className="btn bg-blue-600 hover:bg-blue-700 ">Filter<i className="ml-2 fa-solid fa-filter"></i></button>
           </div>
           {filteredProducts ? (
             <div className="my-5 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5 px-4 md:px-0">

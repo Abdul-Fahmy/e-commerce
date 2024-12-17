@@ -23,6 +23,7 @@ import WishListProvider from "./Context/WishList.context";
 import WishList from "./Pages/WishList/WishList";
 import BrandDetails from "./Pages/BrandDetails/BrandDetails";
 import ChangePassword from "./Pages/ChangePassword/ChangePassword";
+import FilterProvider from "./Context/Filter.context";
 
 function App() {
   const routes = createBrowserRouter([
@@ -69,7 +70,9 @@ function App() {
       <UserProvider>
         <CartProvider>
           <WishListProvider>
+            <FilterProvider>
             <RouterProvider router={routes}></RouterProvider>
+            </FilterProvider>
           </WishListProvider>
         </CartProvider>
       </UserProvider>
