@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Loading from "../../Components/Loading/Loading";
 import HomeSlider from "../../Components/HomeSlider/HomeSlider";
 import CategorySlider from "../../Components/CategorySlider/CategorySlider";
+
 export default function Home() {
   const [products, setProducts] = useState(null);
   const [searchValue, setSearchValue] = useState("");
@@ -34,6 +35,7 @@ export default function Home() {
 
   return (
     <>
+   
       <HomeSlider />
       <CategorySlider />
       {!products ? (
