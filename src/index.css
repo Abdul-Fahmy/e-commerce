@@ -9,6 +9,9 @@
   .btn {
     @apply py-2 px-4 rounded-md text-white;
   }
+  .label-filter {
+    @apply border-solid border border-green-600 rounded-md py-1 px-2 cursor-pointer hover:bg-gray-50;
+  }
 }
 body {
   font-family: "Encode Sans Expanded", sans-serif;
