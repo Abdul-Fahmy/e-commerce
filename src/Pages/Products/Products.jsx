@@ -17,6 +17,8 @@ export default function Products() {
     rangeHundredFive,
     rangeHundredFiveToTwo,
     twoThousand,
+    expensiveToCheaper,
+    lowToExpensive
   } = useContext(FilterContext);
 
   async function getProduct() {
@@ -33,6 +35,40 @@ export default function Products() {
     try {
       const options = {
         url: "https://ecommerce.routemisr.com/api/v1/products?page=2",
+        method: "GET",
+      };
+      let { data } = await axios.request(options);
+
+      if (data) {
+        setProducts(data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  //for all expensive pages 
+  async function getNextExpensiveProduct() {
+    try {
+      const options = {
+        url: "https://ecommerce.routemisr.com/api/v1/products?sort=-price&page=2",
+        method: "GET",
+      };
+      let { data } = await axios.request(options);
+
+      if (data) {
+        setProducts(data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  //for all low pages 
+  async function getNextLowProduct() {
+    try {
+      const options = {
+        url: "https://ecommerce.routemisr.com/api/v1/products?sort=price&page=2",
         method: "GET",
       };
       let { data } = await axios.request(options);
@@ -78,7 +114,7 @@ export default function Products() {
       ) : (
         <>
           <SideBar isOpen={isOpen} setIsOpen={setIsOpen} products={products} />
-          <div className="flex gap-20 justify-center items-center">
+          <div className="flex gap-10 justify-center items-center">
             <div className="search grow w-3/4 mx-auto my-5">
               <input
                 className="form-control"
@@ -96,7 +132,7 @@ export default function Products() {
                   setIsOpen(true);
                 }
               }}
-              className="btn bg-blue-600 hover:bg-blue-700 "
+              className="btn bg-green-600 hover:bg-green-700 flex justify-center items-center "
             >
               Filter<i className="ml-2 fa-solid fa-filter"></i>
             </button>
@@ -123,9 +159,18 @@ export default function Products() {
                     <button
                       onClick={() => {
                         if (products.metadata.currentPage === 2) {
-                          getProduct();
+                          if (expensive) {
+                            expensiveToCheaper()
+                            setNext(true)
+                            
+                          }else if (low) {
+                            lowToExpensive()
+                            setNext(true)
+                            
+                          }else{
+                          getProduct()
                           setNext(true);
-                        }
+                        }}
                       }}
                       className={`${
                         next ? "cursor-not-allowed opacity-50" : ""
@@ -136,9 +181,19 @@ export default function Products() {
                     <button
                       onClick={() => {
                         if (products.metadata.currentPage === 1) {
-                          getNextProduct();
-                          setNext(false);
+                          if (expensive) {
+                            getNextExpensiveProduct()
+                            setNext(false)
+                            
+                          }else if (low) {
+                            getNextLowProduct()
+                            setNext(false)
+                            
+                          }else{
+                          getNextProduct()
+                          setNext(false)
                         }
+                      }
                       }}
                       className={`${
                         next ? "" : "cursor-not-allowed opacity-50"

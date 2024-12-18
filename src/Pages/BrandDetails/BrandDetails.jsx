@@ -17,7 +17,6 @@ export default function BrandDetails() {
         method: "GET",
       };
       let { data } = await axios.request(options);
-      console.log(data);
       if (data.results === 0) {
         toast.custom((t) => (
           <div

@@ -17,7 +17,7 @@ export default function SideBar({ isOpen, setIsOpen }) {
         className={`${
           isOpen
             ? "left-0 transition-all duration-500"
-            : "-left-1/2 transition-all duration-1000 "
+            : "-left-full transition-all duration-1000 "
         } side-bar bg-slate-100 fixed bottom-0 top-0  z-50  p-6`}
       >
         <div className="mb-4">
