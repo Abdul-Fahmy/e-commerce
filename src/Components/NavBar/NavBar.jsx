@@ -42,19 +42,64 @@ export default function NavBar() {
             <>
               <ul className="hidden  md:flex  items-center gap-5">
                 <li>
-                  <NavLink to={"/"}>Home</NavLink>
+                  <NavLink
+                    className={({ isActive }) => {
+                      return `relative before:absolute before:w-0 before:h-0.5 before:bg-green-600 hover:before:w-full before:transition-[width] before:duration-300 before:left-0 before:-bottom-1 ${
+                        isActive ? "before:!w-full font-semibold" : ""
+                      }`;
+                    }}
+                    to={"/"}
+                  >
+                    Home
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink to={"products"}>Products</NavLink>
+                  <NavLink
+                    className={({ isActive }) => {
+                      return `relative before:absolute before:w-0 before:h-0.5 before:bg-green-600 hover:before:w-full before:transition-[width] before:duration-300 before:left-0 before:-bottom-1 ${
+                        isActive ? "before:!w-full font-semibold" : ""
+                      }`;
+                    }}
+                    to={"products"}
+                  >
+                    Products
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink to={"categories"}>Categories</NavLink>
+                  <NavLink
+                    className={({ isActive }) => {
+                      return `relative before:absolute before:w-0 before:h-0.5 before:bg-green-600 hover:before:w-full before:transition-[width] before:duration-300 before:left-0 before:-bottom-1 ${
+                        isActive ? "before:!w-full font-semibold" : ""
+                      }`;
+                    }}
+                    to={"categories"}
+                  >
+                    Categories
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink to={"brands"}>Brands</NavLink>
+                  <NavLink
+                    className={({ isActive }) => {
+                      return `relative before:absolute before:w-0 before:h-0.5 before:bg-green-600 hover:before:w-full before:transition-[width] before:duration-300 before:left-0 before:-bottom-1 ${
+                        isActive ? "before:!w-full font-semibold" : ""
+                      }`;
+                    }}
+                    to={"brands"}
+                  >
+                    Brands
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink to={"allorders"}>Orders</NavLink>
+                  <NavLink
+                    className={({ isActive }) => {
+                      return `relative before:absolute before:w-0 before:h-0.5 before:bg-green-600 hover:before:w-full before:transition-[width] before:duration-300 before:left-0 before:-bottom-1 ${
+                        isActive ? "before:!w-full font-semibold" : ""
+                      }`;
+                    }}
+                    to={"allorders"}
+                  >
+                    Orders
+                  </NavLink>
                 </li>
               </ul>
               <Link
@@ -126,10 +171,28 @@ export default function NavBar() {
             {!token && (
               <>
                 <li>
-                  <NavLink to={"/signup"}>SignUp</NavLink>
+                  <NavLink
+                    className={({ isActive }) => {
+                      return `relative before:absolute before:w-0 before:h-0.5 before:bg-green-600 hover:before:w-full before:transition-[width] before:duration-300 before:left-0 before:-bottom-1 ${
+                        isActive ? "before:!w-full font-semibold" : ""
+                      }`;
+                    }}
+                    to={"/signup"}
+                  >
+                    SignUp
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink to={"/signin"}>SignIn</NavLink>
+                  <NavLink
+                    className={({ isActive }) => {
+                      return `relative before:absolute before:w-0 before:h-0.5 before:bg-green-600 hover:before:w-full before:transition-[width] before:duration-300 before:left-0 before:-bottom-1 ${
+                        isActive ? "before:!w-full font-semibold" : ""
+                      }`;
+                    }}
+                    to={"/signin"}
+                  >
+                    SignIn
+                  </NavLink>
                 </li>
               </>
             )}

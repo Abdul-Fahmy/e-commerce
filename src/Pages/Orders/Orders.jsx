@@ -31,21 +31,15 @@ export default function Orders() {
       {orders ? (
         <section>
           {orders.length === 0 ? (
-            
-              <div className="bg-gray-100 rounded-md  mt-5 shadow p-8 flex flex-col justify-center items-center gap-4 px-4 md:px-0">
-                <h2>
-                  Oops! Your Orders is empty. Start shopping now by clicking
-                  the button below and find something you love!
-                </h2>
-                <Link
-                  to={"/"}
-                  className="btn bg-yellow-400 hover:bg-yellow-500"
-                >
-                  {" "}
-                  Back To Home
-                </Link>
-              </div>
-            
+            <div className="bg-gray-100 rounded-md  mt-5 shadow p-8 flex flex-col justify-center items-center gap-4 px-4 md:px-0">
+              <h2>
+                Oops! Your Orders is empty. Start shopping now by clicking the
+                button below and find something you love!
+              </h2>
+              <Link to={"/"} className="btn bg-yellow-400 hover:bg-yellow-500">
+                Back To Home
+              </Link>
+            </div>
           ) : (
             <section className="space-y-4 px-4 md:px-0">
               {orders.map((order) => (
@@ -61,7 +55,7 @@ export default function Orders() {
                     <div>
                       {order.isPaid ? (
                         <span className="inline-block px-3 py-1 mx-2 bg-lime-500 text-white font-semibold font-cairo rounded-full">
-                          تم مدفوع
+                          تم الدفع
                         </span>
                       ) : (
                         <span className="inline-block px-3 py-1 mx-2 bg-red-500 text-white font-semibold font-cairo rounded-full">
