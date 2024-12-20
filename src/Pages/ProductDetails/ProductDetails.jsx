@@ -53,7 +53,7 @@ export default function ProductDetails() {
     <>
       {productDetails ? (
         <>
-          <section className="grid grid-cols-12 gap-10">
+          <section className="md:grid md:grid-cols-12 md:gap-10 p-3 md:p-0">
             <div className="col-span-4">
               <ReactImageGallery
                 showNav={false}
@@ -100,7 +100,24 @@ export default function ProductDetails() {
               Related Products
             </h2>
             {relatedProducts ? (
-              <Swiper slidesPerView={6} spaceBetween={20} loop={true}>
+              <Swiper
+                breakpoints={{
+                  320: {
+                    slidesPerView: 1,
+                  },
+                  480: {
+                    slidesPerView: 3,
+                  },
+                  640: {
+                    slidesPerView: 4,
+                  },
+                  860: {
+                    slidesPerView: 6,
+                  },
+                }}
+                spaceBetween={20}
+                loop={true}
+              >
                 {relatedProducts.map((product) => (
                   <SwiperSlide key={product.id}>
                     <Card productInfo={product} />

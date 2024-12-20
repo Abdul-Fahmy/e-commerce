@@ -35,7 +35,6 @@ export default function Home() {
 
   return (
     <>
-   
       <HomeSlider />
       <CategorySlider />
       {!products ? (
@@ -52,13 +51,13 @@ export default function Home() {
             />
           </div>
           {filteredProducts ? (
-            <div className="my-5 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5">
+            <div className="p-3 md:p-0 my-5 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5">
               {filteredProducts.map((product) => (
                 <Card productInfo={product} key={product.id} />
               ))}
             </div>
           ) : (
-            <div className="my-5 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5">
+            <div className="p-3 md:p-0 my-5 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5">
               {products.map((product) => (
                 <Card productInfo={product} key={product.id} />
               ))}

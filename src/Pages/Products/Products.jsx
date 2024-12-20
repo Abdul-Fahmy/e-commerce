@@ -18,7 +18,7 @@ export default function Products() {
     rangeHundredFiveToTwo,
     twoThousand,
     expensiveToCheaper,
-    lowToExpensive
+    lowToExpensive,
   } = useContext(FilterContext);
 
   async function getProduct() {
@@ -47,7 +47,7 @@ export default function Products() {
     }
   }
 
-  //for all expensive pages 
+  //for all expensive pages
   async function getNextExpensiveProduct() {
     try {
       const options = {
@@ -64,7 +64,7 @@ export default function Products() {
     }
   }
 
-  //for all low pages 
+  //for all low pages
   async function getNextLowProduct() {
     try {
       const options = {
@@ -138,14 +138,14 @@ export default function Products() {
             </button>
           </div>
           {filteredProducts ? (
-            <div className="my-5 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5 px-4 md:px-0">
+            <div className="p-3  md:p-0 my-5 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5 px-4 md:px-0">
               {filteredProducts.map((product) => (
                 <Card productInfo={product} key={product.id} />
               ))}
             </div>
           ) : (
             <div>
-              <div className="my-5 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5">
+              <div className="p-3 md:p-0 my-5 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5">
                 {products.data.map((product) => (
                   <Card productInfo={product} key={product.id} />
                 ))}
@@ -160,17 +160,16 @@ export default function Products() {
                       onClick={() => {
                         if (products.metadata.currentPage === 2) {
                           if (expensive) {
-                            expensiveToCheaper()
-                            setNext(true)
-                            
-                          }else if (low) {
-                            lowToExpensive()
-                            setNext(true)
-                            
-                          }else{
-                          getProduct()
-                          setNext(true);
-                        }}
+                            expensiveToCheaper();
+                            setNext(true);
+                          } else if (low) {
+                            lowToExpensive();
+                            setNext(true);
+                          } else {
+                            getProduct();
+                            setNext(true);
+                          }
+                        }
                       }}
                       className={`${
                         next ? "cursor-not-allowed opacity-50" : ""
@@ -182,18 +181,16 @@ export default function Products() {
                       onClick={() => {
                         if (products.metadata.currentPage === 1) {
                           if (expensive) {
-                            getNextExpensiveProduct()
-                            setNext(false)
-                            
-                          }else if (low) {
-                            getNextLowProduct()
-                            setNext(false)
-                            
-                          }else{
-                          getNextProduct()
-                          setNext(false)
+                            getNextExpensiveProduct();
+                            setNext(false);
+                          } else if (low) {
+                            getNextLowProduct();
+                            setNext(false);
+                          } else {
+                            getNextProduct();
+                            setNext(false);
+                          }
                         }
-                      }
                       }}
                       className={`${
                         next ? "" : "cursor-not-allowed opacity-50"
