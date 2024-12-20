@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Loading from "../../Components/Loading/Loading";
 
 export default function Brands() {
   const [brands, setBrands] = useState(null);
+  const navigate = useNavigate()
   async function getAllCategories() {
     try {
       const options = {
@@ -26,11 +27,15 @@ export default function Brands() {
     <>
       {brands ? (
         <section>
-          <div className="grid sm:grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 px-4 md:px-0">
+          <div
+           className="grid sm:grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 px-4 md:px-0">
             {brands.map((brand) => (
               <div
+              onClick={()=>{
+                navigate(`/brand/${brand._id}`)
+              }}
                 key={brand._id}
-                className="category-item border-solid border-2 border-gray-400 border-opacity-30 rounded-md overflow-hidden"
+                className="category-item border-solid border-2 border-gray-400 border-opacity-30 rounded-md overflow-hidden cursor-pointer"
               >
                 <img
                   className="w-full h-64 object-cover"
