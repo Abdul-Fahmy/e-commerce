@@ -35,7 +35,7 @@ export default function NavBar() {
       <div className="nav py-3 shadow bg-slate-100 fixed top-0 left-0 right-0 z-50">
         <div className="container flex items-center gap-10 px-3">
           <Link to={"/"}>
-            <img src={logo} alt="FreshCart Logo" />
+            <img className="min-w-[150px]" src={logo} alt="FreshCart Logo" />
           </Link>
 
           {token && (
@@ -131,7 +131,7 @@ export default function NavBar() {
             </>
           )}
           <ul
-            className={`hidden md:flex items-center gap-5 ${
+            className={`hidden lg:flex items-center gap-5 ${
               !token && "ml-auto"
             }`}
           >
