@@ -26,6 +26,7 @@ export default function Checkout() {
       };
       let { data } = await axios.request(options);
       if (data.status === "success") {
+        
         toast.success("Your order has been created");
         setTimeout(() => {
           navigate("/allorders");
@@ -51,6 +52,7 @@ export default function Checkout() {
       };
       let { data } = await axios.request(options);
       if (data.status === "success") {
+        
         toast.loading("redirecting you to stripe");
         setTimeout(() => {
           location.href = data.session.url;
