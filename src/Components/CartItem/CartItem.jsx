@@ -9,7 +9,7 @@ export default function CartItem({ productInfo }) {
   return (
     <>
       <div className="flex gap-2">
-        <div className="card-item grow flex justify-between items-center bg-gray-100 py-4 px-6 rounded-lg">
+        <div className="card-item md:grow flex flex-wrap justify-between items-center bg-gray-100 py-4 px-6 rounded-lg gap-3">
           <img
             className="w-24 h-24 object-cover rounded-full border-4 border-white"
             src={imageCover}
@@ -22,9 +22,9 @@ export default function CartItem({ productInfo }) {
             {title}
           </Link>
           <h4 className="text-gray-500 font-semibold">{category.name}</h4>
-          <div className="count flex items-center gap-5">
+          <div className="count flex items-center gap-5 my-3 md:my-0">
             <span className="text-xl font-bold text-gray-500">{count}</span>
-            <div className="icons space-y-2">
+            <div className="icons  space-y-2">
               <div
                 onClick={() => {
                   updateProductCount({ productId: id, count: count + 1 });

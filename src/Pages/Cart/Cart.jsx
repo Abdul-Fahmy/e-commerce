@@ -49,7 +49,7 @@ export default function Cart() {
                 </p>
                 <button
                   onClick={clearCart}
-                  className="btn bg-red-500 hover:bg-red-600"
+                  className="btn flex justify-center items-center bg-red-500 hover:bg-red-600"
                 >
                   <i className="fa-solid fa-trash mr-2"></i> Clear Cart
                 </button>

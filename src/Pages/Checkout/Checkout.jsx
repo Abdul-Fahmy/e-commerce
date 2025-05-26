@@ -78,8 +78,8 @@ export default function Checkout() {
   });
   return (
     <>
-      <h1 className="mb-4">Shipping Address</h1>
-      <form className="space-y-4" onSubmit={formik.handleSubmit}>
+      <h1 className="mb-4 text-center md:text-start">Shipping Address</h1>
+      <form className="space-y-4 w-3/4 mx-auto md:w-full" onSubmit={formik.handleSubmit}>
         <div className="city">
           <input
             type="text"

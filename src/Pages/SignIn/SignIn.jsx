@@ -60,8 +60,8 @@ export default function SignIn() {
   });
   return (
     <>
-      <h2 className="my-5">Sign In Now :</h2>
-      <form className="space-y-3" onSubmit={formik.handleSubmit}>
+      <h2 className="my-5 text-center md:text-start">Sign In Now :</h2>
+      <form className="space-y-3 mx-auto w-3/4 md:w-full" onSubmit={formik.handleSubmit}>
         <div className="email ">
           <input
             className=" form-control "

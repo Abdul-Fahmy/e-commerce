@@ -70,8 +70,8 @@ export default function SignUp() {
   });
   return (
     <>
-      <h2 className="my-5">Register Now :</h2>
-      <form className="space-y-6" onSubmit={formik.handleSubmit}>
+      <h2 className="my-5 text-center md:text-start">Register Now :</h2>
+      <form className="space-y-6 mx-auto w-3/4 md:w-full" onSubmit={formik.handleSubmit}>
         <div className="name">
           <input
             className="w-full form-control"
